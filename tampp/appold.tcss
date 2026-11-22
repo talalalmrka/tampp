@@ -1,0 +1,120 @@
+Screen {
+    background: $background;
+    layout: vertical;
+}
+.status-container{
+    height: auto;
+    padding: 1 2;
+    background: $surface;
+}
+/* Dashboard */
+.server-cards {
+    height: 9;
+    margin: 1 2;
+    grid-size: 2 1;
+    grid-columns: 1fr 1fr;
+    grid-gutter: 0 2;
+}
+.server-cards-grid{
+    width: 100%;
+    /*height: auto;*/
+    margin: 1;
+    grid-size: 2 1;
+    grid-gutter: 2;
+}
+.status-card {
+    width: 1fr;
+    height: auto;
+    padding: 1 1;
+    border: round;
+    /*border: round transparent;*/
+    background: #334155;
+    /*content-align: left middle;*/
+}
+.status-card:hover {
+    text-style: bold;
+}
+/* Card Title */
+.card-title {
+    color: #ffffff;
+    /*text-style: bold;
+    height: 2;
+    content-align: left middle;*/
+}
+
+/* Status */
+.card-status-row {
+    /*height: 3;
+    align: left middle;*/
+}
+
+.status-indicator {
+    width: 3;
+    content-align: center middle;
+    text-style: bold;
+}
+
+.card-status {
+    width: auto;
+    margin-left: 1;
+    content-align: left middle;
+    text-style: bold;
+}
+
+/* Status Colors */
+.status-on {
+    background: #166534;
+    /*border: round #22c55e;*/
+}
+
+.status-on .status-indicator,
+.status-on .card-status {
+    color: #dcfce7;
+}
+
+.status-off {
+    background: #991b1b;
+    /*border: round #ef4444;*/
+}
+
+.status-off .status-indicator,
+.status-off .card-status {
+    color: #fee2e2;
+}
+
+.status-pending {
+    background: #9a3412;
+    /*border: round #f97316;*/
+}
+
+.status-pending .status-indicator,
+.status-pending .card-status {
+    color: #ffedd5;
+}
+
+/* Server Actions */
+.server-actions {
+    height: 3;
+    margin: 0 2 1 2;
+    layout: horizontal;
+    grid-gutter: 0 2;
+}
+
+.server-actions Button {
+    width: 1fr;
+    margin: 0;
+}
+
+/* Tabs */
+TabbedContent {
+    height: 1fr;
+}
+
+TabPane {
+    padding: 2;
+}
+
+/* Footer */
+Footer {
+    dock: bottom;
+}
