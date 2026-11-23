@@ -1,11 +1,12 @@
+import asyncio
 from pathlib import Path
 
 from textual.app import ComposeResult
 from textual.containers import Vertical
 from textual.widgets import Label, ListItem, Static
 
-from screens import CodeEditorScreen
-from utils import open_dir, open_url
+from tampp.screens import CodeEditorScreen
+from tampp.utils import open_dir, open_url
 
 
 class ListGroupItem(ListItem):
@@ -41,22 +42,13 @@ class ListGroupItem(ListItem):
     def compose(self) -> ComposeResult:
         with Vertical(classes="item-content"):
             if self.title:
-                yield Label(
-                    self.title,
-                    classes="item-title",
-                )
+                yield Label(str(self.title), classes="item-title")
 
             if self.subtitle:
-                yield Static(
-                    self.subtitle,
-                    classes="item-subtitle",
-                )
+                yield Static(str(self.subtitle), classes="item-subtitle")
 
             if self.url:
-                yield Static(
-                    self.url,
-                    classes="item-url",
-                )
+                yield Static(str(self.url), classes="item-url")
 
             if self.path:
                 yield Static(
@@ -64,8 +56,15 @@ class ListGroupItem(ListItem):
                     classes="item-path",
                 )
 
-    def on_click(self) -> None:
-        """Open the associated resource when clicked."""
+    async def on_click(self) -> None:
+        """Apply a press effect and open the associated resource."""
+
+        self.add_class("pressed")
+
+        try:
+            await asyncio.sleep(0.12)
+        finally:
+            self.remove_class("pressed")
 
         if self.url:
             self._open_url()
@@ -73,15 +72,14 @@ class ListGroupItem(ListItem):
             self._open_path()
 
     def _open_url(self) -> None:
-        self.notify(f"Openinig url: {self.url}")
+        self.notify(f"Opening URL: {self.url}")
+
         if not open_url(self.url):
-            self.notify(
-                "Unable to open URL.",
-                severity="error",
-            )
+            self.notify("Unable to open URL.", severity="error")
 
     def _open_path(self) -> None:
         self.notify(f"Opening path: {self.path}")
+
         if not self.path.exists():
             self.notify(
                 f"Path does not exist: {self.path}",
@@ -95,14 +93,8 @@ class ListGroupItem(ListItem):
             self._open_file()
 
     def _open_dir(self) -> None:
-        self.notify(f"Opening dir: {self.path}")
         if not open_dir(self.path):
-            self.notify(
-                "Unable to open directory.",
-                severity="error",
-            )
+            self.notify("Unable to open directory.", severity="error")
 
     def _open_file(self) -> None:
-        # from screens.code_editor import CodeEditorScreen
-
         self.app.push_screen(CodeEditorScreen(self.path))

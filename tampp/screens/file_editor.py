@@ -3,7 +3,7 @@ from pathlib import Path
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import Button, Label, TextArea, Header, Footer
+from textual.widgets import Button, Footer, Header, Label, TextArea
 
 
 class FileEditorScreen(ModalScreen):

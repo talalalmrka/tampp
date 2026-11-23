@@ -1,3 +1,3 @@
-from .file_editor import FileEditorScreen
+from .code_editor import CodeEditorScreen
 
-__all__ = ["FileEditorScreen"]
+__all__ = ["CodeEditorScreen"]

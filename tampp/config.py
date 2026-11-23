@@ -3,7 +3,7 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urlunsplit
-from helpers import get_php_version
+from tampp.helpers import get_php_version
 
 
 @dataclass

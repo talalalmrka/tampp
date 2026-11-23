@@ -2,7 +2,6 @@ import webbrowser
 
 from pathlib import Path
 
-from tampp.widgets import ListGroup
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical, VerticalScroll, Container
 from textual.screen import ModalScreen
@@ -10,7 +9,7 @@ from textual.widgets import Button, Label, Static, TabPane, TextArea
 
 from tampp.config import APP_CONFIG
 from tampp.services.platform import find_php
-from tampp.widgets import StatusItem, ListGroup, ListGroupItem
+from tampp.widgets import ListGroup, ListGroupItem
 from tampp.screens import CodeEditorScreen
 from tampp.helpers import get_php_version
 

@@ -7,9 +7,8 @@ from textual.widgets import Button, Footer, Header, TabbedContent
 
 from tampp.config import APP_CONFIG
 from tampp.models import ServerStatus
-from tampp.services import PhpServer, PhpServerConfig, MariaDBServer, MariaDBConfig
-from tampp.services.mariadb import MariaDBServer, MariaDBConfig
-from tampp.tabs import LogTab, HomeTab, MariadbTab, PhpTab, SettingsTab, ListTab
+from tampp.services import MariaDBConfig, MariaDBServer, PhpServer, PhpServerConfig
+from tampp.tabs import LogTab, MariadbTab, PhpTab, SettingsTab
 from tampp.widgets import StatusCard
 
 
@@ -100,7 +99,7 @@ class TamppServer(App):
                         flat=True,
                     )
 
-            with TabbedContent(initial="tab-list", classes="main-tabs"):
+            with TabbedContent(classes="main-tabs"):
                 yield LogTab(
                     id="tab-log",
                     log_files={
@@ -108,7 +107,6 @@ class TamppServer(App):
                         "MariaDB": APP_CONFIG.mariadb.log_file,
                     },
                 )
-                # yield HomeTab()
                 yield PhpTab(
                     id="tab-php",
                 )
@@ -117,9 +115,6 @@ class TamppServer(App):
                 )
                 yield SettingsTab(
                     id="tab-settings",
-                )
-                yield ListTab(
-                    id="tab-list",
                 )
 
         yield Footer()

@@ -24,10 +24,4 @@ class ListGroup(Vertical):
     def compose(self) -> ComposeResult:
         if self.title:
             yield Label(self.title, classes="list-group-title")
-            # yield ListItem(
-            #     Label(self.title, classes="list-group-title"),
-            #     disabled=True,
-            #     classes="list-group-header",
-            # )
         yield ListView(*self.items)
-        # yield from self.items
