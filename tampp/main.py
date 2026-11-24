@@ -3,12 +3,12 @@ import asyncio
 from textual.app import App, ComposeResult
 from textual.containers import Container, Grid, Vertical
 from textual.reactive import reactive
-from textual.widgets import Button, Footer, Header, TabbedContent
+from textual.widgets import Button, Footer, Header, TabPane, TabbedContent
 
 from tampp.config import APP_CONFIG
 from tampp.models import ServerStatus
 from tampp.services import MariaDBConfig, MariaDBServer, PhpServer, PhpServerConfig
-from tampp.tabs import LogTab, MariadbTab, PhpTab, SettingsTab
+from tampp.tabs import LogTab, MariadbTab, PhpIniTab, PhpTab, SettingsTab
 from tampp.widgets import StatusCard
 
 
@@ -112,6 +112,9 @@ class TamppServer(App):
                 )
                 yield MariadbTab(
                     id="tab-mariadb",
+                )
+                yield PhpIniTab(
+                    id="tab-php-ini",
                 )
                 yield SettingsTab(
                     id="tab-settings",

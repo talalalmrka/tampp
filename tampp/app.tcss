@@ -2,6 +2,7 @@ Screen {
     background: $background;
     layout: vertical;
 }
+
 Header {
     background: $primary;
     padding: 1;
@@ -14,6 +15,14 @@ Header .header-title {
     width: 100%;
     height: auto;
     text-style: bold;
+}
+
+Footer {
+    background: $accent;
+    # padding: 1;
+    height: auto;
+    text-style: bold;
+    color: $text;
 }
 
 .status-container {
@@ -208,4 +217,11 @@ ListGroupItem .item-path {
     padding: 0;
     margin: 0;
     height: auto;
+}
+
+.footer-bar {
+    dock: bottom;
+    width: 100%;
+    height: auto;
+    background: $secondary;
 }

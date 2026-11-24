@@ -6,7 +6,7 @@ from textual.containers import Vertical
 from textual.widgets import Label, ListItem, Static
 
 from tampp.screens import CodeEditorScreen
-from tampp.utils import open_dir, open_url
+from tampp.utils import open_path, open_url
 
 
 class ListGroupItem(ListItem):
@@ -80,12 +80,12 @@ class ListGroupItem(ListItem):
     def _open_path(self) -> None:
         self.notify(f"Opening path: {self.path}")
 
-        if not self.path.exists():
-            self.notify(
-                f"Path does not exist: {self.path}",
-                severity="error",
-            )
-            return
+        # if not self.path.exists():
+        #     self.notify(
+        #         f"Path does not exist: {self.path}",
+        #         severity="error",
+        #     )
+        #     return
 
         if self.path.is_dir():
             self._open_dir()
@@ -93,7 +93,7 @@ class ListGroupItem(ListItem):
             self._open_file()
 
     def _open_dir(self) -> None:
-        if not open_dir(self.path):
+        if not open_path(self.path):
             self.notify("Unable to open directory.", severity="error")
 
     def _open_file(self) -> None:

@@ -3,7 +3,7 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urlunsplit
-from tampp.helpers import get_php_version
+from tampp.utils import php_version, php_ini_path
 
 
 @dataclass
@@ -37,9 +37,7 @@ class PhpConfig:
         )
 
         self.ini_path = (
-            Path(self.ini_path).expanduser()
-            if self.ini_path
-            else self.dashboard_path / "php.ini"
+            Path(self.ini_path).expanduser() if self.ini_path else php_ini_path()
         )
 
         self.router_path = (
@@ -54,7 +52,7 @@ class PhpConfig:
             else self.dashboard_path / "temp"
         )
         if self.php_version is None:
-            self.php_version = get_php_version()
+            self.php_version = php_version()
 
     @property
     def pid_file(self) -> Path:

@@ -3,7 +3,7 @@ import webbrowser
 from textual.message import Message
 from textual.widgets import ListView
 
-from tampp.helpers.system import open_path
+from tampp.utils import open_path
 from tampp.widgets.fg_list_item import FgListItem
 
 

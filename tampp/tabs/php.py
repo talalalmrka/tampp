@@ -11,7 +11,7 @@ from tampp.config import APP_CONFIG
 from tampp.services.platform import find_php
 from tampp.widgets import ListGroup, ListGroupItem
 from tampp.screens import CodeEditorScreen
-from tampp.helpers import get_php_version
+from tampp.utils import php_version
 
 
 class PhpTab(TabPane):

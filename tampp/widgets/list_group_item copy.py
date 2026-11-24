@@ -5,7 +5,7 @@ from textual.containers import Vertical
 from textual.widgets import Label, ListItem, Static
 
 from screens import CodeEditorScreen
-from utils import open_dir, open_url
+from utils import open_path, open_url
 
 
 class ListGroupItem(ListItem):
@@ -96,7 +96,7 @@ class ListGroupItem(ListItem):
 
     def _open_dir(self) -> None:
         self.notify(f"Opening dir: {self.path}")
-        if not open_dir(self.path):
+        if not open_path(self.path):
             self.notify(
                 "Unable to open directory.",
                 severity="error",
