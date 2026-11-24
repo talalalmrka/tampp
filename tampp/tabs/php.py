@@ -66,19 +66,19 @@ class PhpTab(TabPane):
                 items=[
                     ListGroupItem(
                         title="Server Url",
-                        url=self.base_url,
+                        url=self.config.url,
                     ),
                     ListGroupItem(
                         title="Dashboard",
-                        url=self.dashboard_url,
+                        url=self.config.dashboard_url,
                     ),
                     ListGroupItem(
                         title="Phpinfo",
-                        url=self.php_info_url,
+                        url=self.config.php_info_url,
                     ),
                     ListGroupItem(
                         title="Phpmyadmin",
-                        url=self.phpmyadmin_url,
+                        url=self.config.phpmyadmin_url,
                     ),
                 ],
             ),
@@ -87,15 +87,15 @@ class PhpTab(TabPane):
                 items=[
                     ListGroupItem(
                         title="Document Root",
-                        path=self.document_root,
+                        path=self.config.root,
                     ),
                     ListGroupItem(
                         title="Dashboard",
-                        path=self.dashboard_path,
+                        path=self.config.dashboard_path,
                     ),
                     ListGroupItem(
                         title="Temp directory",
-                        path=self.temp_path,
+                        path=self.config.temp_path,
                     ),
                 ],
             ),
@@ -104,7 +104,7 @@ class PhpTab(TabPane):
                 items=[
                     ListGroupItem(
                         title="Configuration (php.ini)",
-                        path=self.ini_path,
+                        path=self.config.ini_path,
                     ),
                     ListGroupItem(
                         title="Router",

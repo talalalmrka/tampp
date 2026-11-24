@@ -22,17 +22,24 @@ def open_url(url: str) -> bool:
         raise ValueError(f"Invalid URL: {url}")
 
     # Termux
-    if os.environ.get("TERMUX_VERSION") or (
-        "com.termux" in os.environ.get("PREFIX", "")
-    ):
-        opener = shutil.which("termux-open-url")
+    termux_opener = shutil.which("termux-open-url")
+    if termux_opener:
+        try:
+            subprocess.Popen([termux_opener, url])
+            return True
+        except OSError:
+            pass
+    # if os.environ.get("TERMUX_VERSION") or (
+    #     "com.termux" in os.environ.get("PREFIX", "")
+    # ):
+    #     opener = shutil.which("termux-open-url")
 
-        if opener:
-            try:
-                subprocess.Popen([opener, url])
-                return True
-            except OSError:
-                pass
+    #     if opener:
+    #         try:
+    #             subprocess.Popen([opener, url])
+    #             return True
+    #         except OSError:
+    #             pass
 
     # Standard browser handler
     try:

@@ -51,7 +51,7 @@ class PhpConfig:
         self.temp_path = (
             Path(self.temp_path).expanduser()
             if self.temp_path
-            else self.dashboard_path / "tmp"
+            else self.dashboard_path / "temp"
         )
         if self.php_version is None:
             self.php_version = get_php_version()
@@ -74,7 +74,7 @@ class PhpConfig:
 
     @property
     def php_info_url(self) -> str:
-        return f"{self.dashboard_url}/phpinfo.php"
+        return f"{self.url}/phpinfo"
 
     @property
     def phpmyadmin_url(self) -> str:
@@ -90,7 +90,7 @@ class MariaDBConfig:
     log_file: Path | None = None
 
     def __post_init__(self):
-        temp_path = PROJECTS_PATH / "dashboard" / "tmp"
+        temp_path = PROJECTS_PATH / "dashboard" / "temp"
 
         if self.pid_file is None:
             self.pid_file = temp_path / "mariadb.pid"
